@@ -1,0 +1,105 @@
+﻿<Window x:Class="asd1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:asd1"
+        xmlns:wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="ASD1" Height="794" Width="1098.8" Background="#FFF0F0F0">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70*" />
+            <ColumnDefinition Width="235*" />
+            <ColumnDefinition Width="786*" />
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Left" Height="36" Margin="0,56,0,0" VerticalAlignment="Top" Width="180"
+              Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition Width="0*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Minimalna ilość" VerticalAlignment="Top"
+                       RenderTransformOrigin="0.286,0.062" Margin="25,0,0,0" Height="16" FontSize="10" Width="69"
+                       Grid.ColumnSpan="2" />
+            <TextBox x:Name="MinBox" HorizontalAlignment="Left" Height="19" Margin="25,16,0,0" TextWrapping="Wrap"
+                     Text="1" VerticalAlignment="Top" RenderTransformOrigin="0.067,-0.109" Grid.ColumnSpan="2"
+                     Width="129" />
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="36" Margin="0,109,0,0" VerticalAlignment="Top" Width="180"
+              RenderTransformOrigin="1.642,0.5" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Maksymalna ilość" VerticalAlignment="Top"
+                       RenderTransformOrigin="0.286,0.062" Margin="26,0,0,0" Height="16" FontSize="10"
+                       Grid.ColumnSpan="2" Width="95" />
+            <TextBox x:Name="MaxBox" HorizontalAlignment="Left" Height="19" Margin="26,16,0,0" TextWrapping="Wrap"
+                     Text="100000" VerticalAlignment="Top" RenderTransformOrigin="0.067,-0.109" Grid.ColumnSpan="2"
+                     Width="129" />
+        </Grid>
+
+
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="1,376,0,0" TextWrapping="Wrap"
+                   Text="Jakub Gadawski, 2019" VerticalAlignment="Top" Width="179" Opacity="0.5" Height="16"
+                   TextAlignment="Center" />
+        <ProgressBar x:Name="calculationProgress" HorizontalAlignment="Left" Height="25" Margin="0,277,0,0"
+                     VerticalAlignment="Top" Width="180" RenderTransformOrigin="0.645,6.1" Grid.Column="1" />
+        <TextBlock x:Name="succeded" HorizontalAlignment="Left" Margin="1,325,0,0" TextWrapping="Wrap"
+                   Text="Obliczenia zakończone sukcesem!" VerticalAlignment="Top" Height="16" Width="179"
+                   Grid.Column="1" TextAlignment="Center" />
+        <Grid HorizontalAlignment="Left" Height="36" Margin="0,160,0,0" VerticalAlignment="Top" Width="180"
+              RenderTransformOrigin="1.642,0.5" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Krok" VerticalAlignment="Top"
+                       RenderTransformOrigin="0.286,0.062" Margin="26,0,0,0" Height="16" FontSize="10"
+                       Grid.ColumnSpan="2" Width="95" />
+            <TextBox x:Name="StepBox" HorizontalAlignment="Left" Height="19" Margin="26,16,0,0" TextWrapping="Wrap"
+                     Text="5" VerticalAlignment="Top" RenderTransformOrigin="0.067,-0.109" Grid.ColumnSpan="2"
+                     Width="129" />
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="50" Margin="1,212,0,0" VerticalAlignment="Top" Width="180"
+              RenderTransformOrigin="1.642,0.5" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="StartButton" Content="Start" HorizontalAlignment="Left" Margin="32,0,0,0"
+                    VerticalAlignment="Top" Width="116" Height="50" Click="StartButton_Click"
+                    RenderTransformOrigin="-0.164,2.82" Grid.ColumnSpan="2" />
+        </Grid>
+        <Grid Grid.Column="2" Margin="3,56,50,50" MinHeight="100" MinWidth="100">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*" />
+                <RowDefinition />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+
+            <wpf:CartesianChart x:Name="plot" Margin="0,16,0,0">
+                <wpf:CartesianChart.AxisX>
+                    <wpf:Axis Title="Długość tablicy" />
+                </wpf:CartesianChart.AxisX>
+                <wpf:CartesianChart.AxisY>
+                    <wpf:Axis Title="Czas" />
+                </wpf:CartesianChart.AxisY>
+            </wpf:CartesianChart>
+            <wpf:CartesianChart x:Name="plot2" Grid.Row="2" Margin="0,16,0,0">
+                <wpf:CartesianChart.AxisX>
+                    <wpf:Axis Title="Długość tablicy" />
+                </wpf:CartesianChart.AxisX>
+                <wpf:CartesianChart.AxisY>
+                    <wpf:Axis Title="Ilość" />
+                </wpf:CartesianChart.AxisY>
+            </wpf:CartesianChart>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Czas wykonywania" VerticalAlignment="Top" />
+            <TextBlock HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="Operacje elementarne"
+                       VerticalAlignment="Top" />
+        </Grid>
+    </Grid>
+
+</Window>
